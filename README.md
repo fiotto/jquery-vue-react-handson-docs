@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+# ハンズオン資料
 
-You can use the [editor on GitHub](https://github.com/fiotto/jquery-vue-react-handson-docs/edit/gh-pages/README.md) to maintain and preview the content for your website in Markdown files.
+## 完成形
+https://fiotto.github.io/jquery-vue-react-handson/
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+## リポジトリ
+必要なファイルをDownload
+```
+$ git clone https://github.com/fiotto/jquery-vue-react-handson.git
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+もしくは
+ブラウザで  
+https://github.com/fiotto/jquery-vue-react-handson を開き  
+右側にある「Clone or download」- 「Download ZIP」からファイルをダウンロード  
+その後、ZIP解凍
 
-### Jekyll Themes
+`index.html`をブラウザで開く。  
+`jqeury.html`、 `vue.html`、 `react.html`をテキストエディタで開く。  
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/fiotto/jquery-vue-react-handson-docs/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+これで準備完了
 
-### Support or Contact
+## スタート地点
+デザイン(CSS)はすでにできている  
+ここから画面に動きをつけていく
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## 行う内容
+STEP1 : 環境の用意  
+STEP2 : Hello World  
+STEP3 : 条件分岐  
+STEP4 : ループ処理  
+STEP5 : 値のバインド  
+STEP6 : イベントの追加  
+STEP7 : 属性のバインド  
+STEP8 : 値の変更  
+STEP9 : 仮のデータを削除(完成)
+
+[STEP1へ](step1.md)  
