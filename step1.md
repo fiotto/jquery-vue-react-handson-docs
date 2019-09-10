@@ -57,7 +57,7 @@ TemplateのHTMLをVueとReactに移行して操作できるようにする
 
 - STEP1-2
 
-HTMLの要素をJSXに移動させる。
+HTMLの要素を移動させる。
 
 ```diff
     <div id="root"></div>

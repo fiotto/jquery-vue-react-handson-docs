@@ -15,6 +15,8 @@ spanタグにid属性を付与し、textを書き換える。
     <div class="row">
 ```
 
+`$(セレクタ)`変更するElementを指定し、
+メソッドを呼び出して、操作する。
 ```diff
     <script>
       // TODO ここに記述する
@@ -28,15 +30,7 @@ spanタグにid属性を付与し、textを書き換える。
 ```
 
 ### Vue.js
-```diff
-      <div class="container">
--       <h1><span>XXX</span>のサンプル</h1>
-+       <h1><span>{{ title }}</span>のサンプル</h1>
- 
-        <div class="row">
-```
-
-Vue.jsの場合、変数はdataの部分に指定する
+Vue.jsの場合、変数はobjectのdataプロパティの部分に指定する
 ```diff
     <script>
       // TODO ここに記述する
@@ -53,7 +47,17 @@ Vue.jsの場合、変数はdataの部分に指定する
 
 ```
 
+`{{ }}`で囲んだ中身は式となり、値を表示できる
+```diff
+      <div class="container">
+-       <h1><span>XXX</span>のサンプル</h1>
++       <h1><span>{{ title }}</span>のサンプル</h1>
+ 
+        <div class="row">
+```
+
 ### React
+Reactの場合式には`{ }`で囲む
 ```diff
     <script type="text/babel">
       // TODO ここに記述する
