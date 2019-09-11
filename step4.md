@@ -50,6 +50,8 @@
           </tbody>
 ```
 
+jQueryで動的に構成する場合は、
+DOMのツリー構造を構成する。
 
 ```diff
       isSelectdItem ? $('#area-is-selectd-item').show() : $('#area-is-selectd-item').hide();
@@ -99,6 +101,7 @@
     </script>
 ```
 ### Vue.js
+変数はdataに追加する
 ```diff
         data: function(){
           return {
@@ -113,6 +116,11 @@
           }
         }
 ```
+
+`v-for`構文で`Array`もしくは`Object`のループを行えます  
+`v-for`構文の中で`${配列要素のエイリアス} in ${ソースデータの配列}`で表記する  
+`v-for`構文でループさせる時に、vue側で判別しやすいようにユニークな要素を`v-bind:key`で指定することが推奨されている
+`v-bind`については、STEP7で説明
 
 ```diff
               <tr>
@@ -173,6 +181,12 @@
         
         return (
 ```
+
+ループに関しても、特別な構文を提供していないので、
+JavaScriptの構文をを使う。
+配列のすべての要素に対して呼び出し、新しい配列を作成する
+[Array.prototype.map()](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  
+を使う。
 
 ```diff
                 <tbody>

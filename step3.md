@@ -7,6 +7,8 @@
 
 ## 実装
 ### jQuery
+変化をつけるelementにそれぞれidをつけて、操作する。
+
 ```diff
       <div class="tmp-space">
 -       重要度の変更を表示 : <span>true</span>
@@ -20,6 +22,7 @@
             <p class="text-center">
 ```
 
+DOM自体は消さず表示(show())と非表示(hide())を切り替える
 ```diff
       $('#text-title').text(title);
 +
@@ -43,6 +46,8 @@
         }
 ```
 
+`v-if`で式を指定することで、式を評価して、正なら表示、非なら非表示となる  
+jQeuryと違い、DOM自体生成されない
 ```diff
         <div class="tmp-space">
 -         重要度の変更を表示 : <span>true</span>
@@ -55,6 +60,7 @@
             <div class="card">
 ```
 ### React
+変数はApp関数（コンポーネント）内で宣言する
 ```diff
       const title = 'React';
     
@@ -74,6 +80,10 @@
            </div>
 ```
 
+Reactの場合ifを行う構文を提供していないので、
+`{ }`で式であることを利用して、JavaScript構文で記述  
+論理和演算子を用いて、`&&`の前が`true`なら、`&&`の後が評価されることを利用する  
+三項演算子で、ifならこのElement、elseならこのElementといった指定も可能
 ```diff
 +           { isSelectdItem && (
               <div>
