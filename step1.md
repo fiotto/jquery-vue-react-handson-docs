@@ -9,13 +9,16 @@ TemplateのHTMLをVueとReactに移行して操作できるようにする
 ### Vue.js
 対象の領域をdivで囲む
 ```diff
+{% raw %}
   <body>
 +   <div id="app">
       <div class="container">
         <h1><span>XXX</span>のサンプル</h1>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
         </div>
       </div>
 +   </div>
@@ -27,6 +30,7 @@ TemplateのHTMLをVueとReactに移行して操作できるようにする
 +       el: '#app'
 +     })
     </script>
+{% endraw %}
 ```
 
 ### React
@@ -34,13 +38,16 @@ TemplateのHTMLをVueとReactに移行して操作できるようにする
 
 領域を確保する
 ```diff
+{% raw %}
   <body>
 +   <div id="root"></div>
     <div class="container">
       <h1><span>XXX</span>のサンプル</h1>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
     <script type="text/babel">
       // TODO ここに記述する
 -
@@ -53,6 +60,7 @@ TemplateのHTMLをVueとReactに移行して操作できるようにする
 +    
 +     ReactDOM.render(<App />, document.getElementById('root'));
 +   </script>
+{% endraw %}
 ```
 
 - STEP1-2
@@ -60,6 +68,7 @@ TemplateのHTMLをVueとReactに移行して操作できるようにする
 HTMLの要素を移動させる。
 
 ```diff
+{% raw %}
     <div id="root"></div>
 -   <div class="container">
 -     <h1><span>XXX</span>のサンプル</h1>
@@ -84,6 +93,7 @@ HTMLの要素を移動させる。
 -         </div>
         );
       }
+{% endraw %}
 ```
 
 - STEP1-3
@@ -93,17 +103,21 @@ JavaScriptの予約語を属性名としているものは、置き換える必�
 `for` -> `htmlFor`
 
 ```diff
+{% raw %}
 +         <div className="container">
 -         <div class="container">
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
 +           <div className="row">
 -           <div class="row">
 +             <input type="text" className="form-control"/>
 -             <input type="text" class="form-control"/>
 +             <button type="button" className="btn-action">追加</button>
 -             <button type="button" class="btn-action">追加</button>
+{% endraw %}
 ```
 
 -- 以下同様 --
