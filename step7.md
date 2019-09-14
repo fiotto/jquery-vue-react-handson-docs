@@ -15,6 +15,7 @@ STEP3で作成した表示/非表示のトリガーをランダムから
 - STEP7-1
 
 ```diff
+{% raw %}
       $('#area-todo-high').empty();
       for(todo of todos.high){
         $('#area-todo-high').append(
@@ -53,35 +54,43 @@ STEP3で作成した表示/非表示のトリガーをランダムから
           )
         );
       }
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
 +     // STEP 7
 +     $(document).on('click', '.btn-todo', function(){
 +       $('.btn-todo').removeClass('selected');
 +       $(this).addClass('selected');
 +     });
     </script>
+{% endraw %}
 ```
 
 - STEP7-2
 
 ```diff
+{% raw %}
             <p class="text-center">
 -             <span class="color-red">洗濯</span>の重要度を
 +             <span class="color-red" id="text-selected-item">___</span>の重要度を
             </p>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
       // STEP 3
 -     const isSelectdItem = Math.random() > 0.5;
 -
 -     $('#text-is-selectd-item').text(String(isSelectdItem));
 -     isSelectdItem ? $('#area-is-selectd-item').show() : $('#area-is-selectd-item').hide();
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
       // STEP 7
 +     $('#area-is-selectd-item').hide();
 +     $('#text-is-selectd-item').text(String(false));
@@ -94,13 +103,14 @@ STEP3で作成した表示/非表示のトリガーをランダムから
 +       $('#text-is-selectd-item').text(String(true));
 +       $('#text-selected-item').text($(this).text());
       });
-
+{% endraw %}
 ```
 
 ### Vue.js
 - STEP7-1
 
 ```diff
+{% raw %}
         data: function(){
           return {
             title: 'Vue.js',
@@ -114,9 +124,11 @@ STEP3で作成した表示/非表示のトリガーをランダムから
 +           selectedItem: null
           }
         },
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
         methods: {
           addItem: function(){
             this.todos.normal.push(this.inputItem);
@@ -127,9 +139,11 @@ STEP3で作成した表示/非表示のトリガーをランダムから
 +           this.selectedItem = todo;
 +         }
         }
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
             <tbody>
               <tr>
                 <td>
@@ -161,18 +175,22 @@ STEP3で作成した表示/非表示のトリガーをランダムから
                 </td>
               </tr>
             </tbody>
+{% endraw %}
 ```
 
 - STEP7-2
 
 ```diff
+{% raw %}
           return {
             title: 'Vue.js',
 -           isSelectdItem: Math.random() > 0.5,
             todos: {
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
         },
 +       computed: {
 +         isSelectdItem: function(){
@@ -180,20 +198,24 @@ STEP3で作成した表示/非表示のトリガーをランダムから
 +         }
 +       },
         methods: {
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
             <div class="card">
               <p class="text-center">
 -               <span class="color-red">洗濯</span>の重要度を
 +               <span class="color-red">{{ selectedItem }}</span>の重要度を
               </p>
+{% endraw %}
 ```
 
 ### React
 - STEP7-1
 
 ```diff
+{% raw %}
         const [inputItem, setInputItem] = React.useState('');
 +       const [selectedItem, setSelectedItem] = React.useState(null);
 
@@ -208,9 +230,11 @@ STEP3で作成した表示/非表示のトリガーをランダムから
 +       }
 
         return (
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
                 <tbody>
                   <tr>
                     <td>
@@ -248,11 +272,13 @@ STEP3で作成した表示/非表示のトリガーをランダムから
                     </td>
                   </tr>
                 </tbody>
+{% endraw %}
 ```
 
 - STEP7-2
 
 ```diff
+{% raw %}
       function App(){
 -       const isSelectdItem = Math.random() > 0.5;
         const [todos, setTodos] = React.useState({
@@ -260,9 +286,11 @@ STEP3で作成した表示/非表示のトリガーをランダムから
           normal: ['買い物', '草刈り', 'アイロン'],
           low: ['窓拭き', '振り込み', '家計簿管理']
         });
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
         function onClickTodo(todo){
           setSelectedItem(todo);
         }
@@ -272,10 +300,11 @@ STEP3で作成した表示/非表示のトリガーをランダムから
 +       }
 +
         return (
-
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
             <div className="tmp-space">
 -             重要度の変更を表示 : <span>{ String(isSelectdItem) }</span>
 +             重要度の変更を表示 : <span>{ String(isSelectdItem()) }</span>
@@ -298,6 +327,7 @@ STEP3で作成した表示/非表示のトリガーをランダムから
                 </div>
               </div>
             )}
+{% endraw %}
 ```
 
 [STEP6へ](step6.md)  

@@ -10,6 +10,7 @@
 変化をつけるelementにそれぞれidをつけて、操作する。
 
 ```diff
+{% raw %}
       <div class="tmp-space">
 -       重要度の変更を表示 : <span>true</span>
 +       重要度の変更を表示 : <span id="text-is-selectd-item">___</span>
@@ -20,10 +21,12 @@
         <div class="content-center">
           <div class="card">
             <p class="text-center">
+{% endraw %}
 ```
 
 DOM自体は消さず表示(show())と非表示(hide())を切り替える
 ```diff
+{% raw %}
       $('#text-title').text(title);
 +
 +     // STEP 3
@@ -31,11 +34,13 @@ DOM自体は消さず表示(show())と非表示(hide())を切り替える
 +
 +     $('#text-is-selectd-item').text(String(isSelectdItem));
 +     isSelectdItem ? $('#area-is-selectd-item').show() : $('#area-is-selectd-item').hide();
+{% endraw %}
 ```
 
 
 ### Vue.js
 ```diff
+{% raw %}
         el: '#app',
         data: function(){
           return {
@@ -44,11 +49,13 @@ DOM自体は消さず表示(show())と非表示(hide())を切り替える
 +           isSelectdItem: Math.random() > 0.5
           }
         }
+{% endraw %}
 ```
 
 `v-if`で式を指定することで、式を評価して、正なら表示、非なら非表示となる  
 jQeuryと違い、DOM自体生成されない
 ```diff
+{% raw %}
         <div class="tmp-space">
 -         重要度の変更を表示 : <span>true</span>
 +         重要度の変更を表示 : <span>{{ isSelectdItem }}</span>
@@ -58,10 +65,12 @@ jQeuryと違い、DOM自体生成されない
 +       <div v-if="isSelectdItem">
           <div class="content-center">
             <div class="card">
+{% endraw %}
 ```
 ### React
 変数はApp関数（コンポーネント）内で宣言する
 ```diff
+{% raw %}
       const title = 'React';
     
       function App(){
@@ -70,14 +79,16 @@ jQeuryと違い、DOM自体生成されない
         return (
           <div className="container">
             <h1><span>{ title }</span>のサンプル</h1>
-
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
            <div className="tmp-space">
 -            重要度の変更を表示 : <span>true</span>
 +            重要度の変更を表示 : <span>{ String(isSelectdItem) }</span>
            </div>
+{% endraw %}
 ```
 
 Reactの場合ifを行う構文を提供していないので、
@@ -85,13 +96,16 @@ Reactの場合ifを行う構文を提供していないので、
 論理和演算子を用いて、`&&`の前が`true`なら、`&&`の後が評価されることを利用する  
 三項演算子で、ifならこのElement、elseならこのElementといった指定も可能
 ```diff
+{% raw %}
 +           { isSelectdItem && (
               <div>
                 <div className="content-center">
                   <div className="card">
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
                 </div>
               </div>
 +           )}
@@ -100,6 +114,7 @@ Reactの場合ifを行う構文を提供していないので、
       }
     
       ReactDOM.render(<App />, document.getElementById('root'));
+{% endraw %}
 ```
 
 [STEP2へ](step2.md)  

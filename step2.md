@@ -8,16 +8,19 @@
 ### jQuery
 spanタグにid属性を付与し、textを書き換える。
 ```diff
+{% raw %}
     <div class="container">
 -     <h1><span>XXX</span>のサンプル</h1>
 +     <h1><span id="text-title">___</span>のサンプル</h1>
 
     <div class="row">
+{% endraw %}
 ```
 
 `$(セレクタ)`変更するElementを指定し、
 メソッドを呼び出して、操作する。
 ```diff
+{% raw %}
     <script>
       // TODO ここに記述する
 -
@@ -26,12 +29,13 @@ spanタグにid属性を付与し、textを書き換える。
 +
 +     $('#text-title').text(title);
     </script>
-
+{% endraw %}
 ```
 
 ### Vue.js
 Vue.jsの場合、変数はobjectのdataプロパティの部分に指定する
 ```diff
+{% raw %}
     <script>
       // TODO ここに記述する
       const app = new Vue({
@@ -44,21 +48,24 @@ Vue.jsの場合、変数はobjectのdataプロパティの部分に指定する
 +       }
       })
    </script>
-
+{% endraw %}
 ```
 
 `{{ }}`で囲んだ中身は式となり、値を表示できる
 ```diff
+{% raw %}
       <div class="container">
 -       <h1><span>XXX</span>のサンプル</h1>
 +       <h1><span>{{ title }}</span>のサンプル</h1>
  
         <div class="row">
+{% endraw %}
 ```
 
 ### React
 Reactの場合式には`{ }`で囲む
 ```diff
+{% raw %}
     <script type="text/babel">
       // TODO ここに記述する
 +     const title = 'React';
@@ -71,6 +78,7 @@ Reactの場合式には`{ }`で囲む
  
             <div className="row">
               <input type="text" className="form-control"/>
+{% endraw %}
 ```
 
 [STEP1へ](step1.md)  

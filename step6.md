@@ -7,14 +7,17 @@ TODOリストに内容を追加する
 ## 実装
 ### jQuery
 ```diff
+{% raw %}
       <div class="row">
         <input type="text" class="form-control" id="input-item"/>
 -       <button type="button" class="btn-action">追加</button>
 +       <button type="button" class="btn-action" id="button-add">追加</button>
       </div>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
 + 
 +     // STEP 6
 +     $('#input-item').on('input', function(){
@@ -37,19 +40,22 @@ TODOリストに内容を追加する
 +       $('#input-item').trigger('input');
 +     });
     </script>
-
+{% endraw %}
 ```
 
 ### Vue.js
 ```diff
+{% raw %}
         <div class="row">
           <input type="text" class="form-control" v-model="inputItem"/>
 -         <button type="button" class="btn-action">追加</button>
 +         <button type="button" class="btn-action" v-on:click="addItem(inputItem)">追加</button>
         </div>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
         data: function(){
           ･･･
 -       }
@@ -60,10 +66,12 @@ TODOリストに内容を追加する
 +           this.inputItem = '';
 +         }
 +       }
+{% endraw %}
 ```
 
 ### React
 ```diff
+{% raw %}
       function App(){
         const isSelectdItem = Math.random() > 0.5;
 -       const todos = {
@@ -84,9 +92,11 @@ TODOリストに内容を追加する
         return (
           <div className="container">
             <h1><span>{ title }</span>のサンプル</h1>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
             <div className="row">
               <input type="text" className="form-control" 
                 value={ inputItem }
@@ -96,6 +106,7 @@ TODOリストに内容を追加する
 +             <button type="button" className="btn-action" onClick={ addItem }>追加</button>
 
             </div>
+{% endraw %}
 ```
 
 [STEP5へ](step5.md)  
