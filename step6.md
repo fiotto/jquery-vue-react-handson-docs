@@ -22,10 +22,6 @@ TODOリストに内容を追加する
 {% raw %}
 + 
 +     // STEP 6
-+     $('#input-item').on('input', function(){
-+       $('#text-item').text($(this).val());
-+     }).trigger('input');
-+ 
 +     $('#button-add').on('click', function(){
 +       const inputItem = $('#input-item').val();
 + 

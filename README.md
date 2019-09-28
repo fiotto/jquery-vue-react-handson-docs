@@ -9,11 +9,18 @@
 $ git clone https://github.com/fiotto/jquery-vue-react-handson.git
 ```
 
+途中から進める場合はTagを切り替える
+```
+$ git checkout refs/tags/step7
+```
 もしくは
 ブラウザで  
 [https://github.com/fiotto/jquery-vue-react-handson](https://github.com/fiotto/jquery-vue-react-handson) 
 を開き  
 右側にある「Clone or download」- 「Download ZIP」からファイルをダウンロード  
+特定のSTEPから始める場合は  「BranchBranch : master」 -> 「tags」のタブから
+選択できる  
+
 その後、ZIP解凍
 
 `index.html`をブラウザで開く。  
