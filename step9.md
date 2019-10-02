@@ -8,6 +8,7 @@
 
 ### jQuery
 ```diff
+{% raw %}
       </div>
   
 -     <div class="tmp-space">
@@ -15,10 +16,11 @@
 -     </div>
 -
       <div>
-
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
       </div>
 
 -     <div class="tmp-space">
@@ -26,9 +28,11 @@
 -     </div>
 
       <div id="area-is-selectd-item">
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
       // STEP 4
       const todos = {
 -       high : ['掃除', '洗濯', '炊事'],
@@ -38,10 +42,12 @@
 +       normal: [],
 +       low: []
       };
+{% endraw %}
 ```
 
 ### Vue.js
 ```diff
+{% raw %}
        </div>
 
 -      <div class="tmp-space">
@@ -49,9 +55,11 @@
 -      </div>
 -
        <div>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
        </div>
 
 -      <div class="tmp-space">
@@ -59,10 +67,11 @@
 -      </div>
 -
        <div v-if="isSelectdItem">
-
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
           return {
             title: 'Vue.js',
             todos: {
@@ -75,10 +84,12 @@
             },
             inputItem: '',
             selectedItem: null
+{% endraw %}
 ```
 
 ### React
 ```diff
+{% raw %}
            </div>
 
 -          <div className="tmp-space">
@@ -86,9 +97,11 @@
 -          </div>
 -
            <div>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
            </div>
 
 -          <div className="tmp-space">
@@ -96,9 +109,11 @@
 -          </div>
 -          
            { isSelectdItem() && (
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
       function App(){
         const [todos, setTodos] = React.useState({
 -         high : ['掃除', '洗濯', '炊事'],
@@ -110,6 +125,7 @@
         });
         const [inputItem, setInputItem] = React.useState('');
         const [selectedItem, setSelectedItem] = React.useState(null);
+{% endraw %}
 ```
 
 [STEP8へ](step8.md)  

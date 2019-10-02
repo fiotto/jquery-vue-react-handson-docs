@@ -9,6 +9,7 @@
 
 ### jQuery
 ```diff
+{% raw %}
             <p>
 -             <button type="button" class="btn-action" disabled>上げる</button>
 +             <button type="button" class="btn-action button-priority"
@@ -19,12 +20,14 @@
 +               id="button-priority-down"
 +             >下げる</button>
             </p>
+{% endraw %}
 ```
 
 `` `.btn-todo-high:contains("${selecedItem}")` ``はテンプレート文字列であり、文字列内挿機能をそなえている。  
 `:contains`で文字列を含む要素を抽出できるので、これで含まれているかどうかの判定ができる。  
 
 ```diff
+{% raw %}
       $(document).on('click', '.btn-todo', function(){
 +       const selecedItem = $(this).text();
 +
@@ -78,12 +81,14 @@
 +      }
 +    })
    </script>
+{% endraw %}
 ```
 
 ### Vue.js
 項目の一覧が配列になっているので`Array.prototype.includes()`で含まれているかどうかを確認できる。  
 
 ```diff
+{% raw %}
               <p>
 -               <button type="button" class="btn-action" disabled>上げる</button>
 +               <button type="button" class="btn-action"
@@ -96,9 +101,11 @@
 +                 v-on:click="onClickPriority(-1)"
 +               >下げる</button>
               </p>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
           onClickTodo: function(todo){
             this.selectedItem = todo;
 -         }
@@ -123,11 +130,13 @@
 +         }
         }
       })
+{% endraw %}
 ```
 
 ### React
 Vue.jsと同様に`Array.prototype.includes()`が使える。  
 ```diff
+{% raw %}
                     <p>
 -                     <button type="button" className="btn-action" disabled>上げる</button>
 +                     <button type="button" className="btn-action"
@@ -140,9 +149,11 @@ Vue.jsと同様に`Array.prototype.includes()`が使える。
 +                       onClick={ () => onClickPriority(-1) }
 +                     >下げる</button>
                     </p>
+{% endraw %}
 ```
 
 ```diff
+{% raw %}
         function isSelectdItem(){
           return selectedItem !== null;
         }
@@ -169,6 +180,7 @@ Vue.jsと同様に`Array.prototype.includes()`が使える。
 +       }
 +
         return (
+{% endraw %}
 ```
 
 [STEP7へ](step7.md)  

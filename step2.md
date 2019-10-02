@@ -33,7 +33,7 @@ spanタグにid属性を付与し、textを書き換える。
 ```
 
 ### Vue.js
-Vue.jsの場合、変数はobjectのdataプロパティの部分に指定する
+Vue.jsの場合、変数はobjectの`data`プロパティの部分に指定する
 ```diff
 {% raw %}
     <script>
