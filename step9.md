@@ -112,5 +112,5 @@
         const [selectedItem, setSelectedItem] = React.useState(null);
 ```
 
-[STEP6へ](step7.md)  
-[STEP8へ](step9.md)  
+[STEP8へ](step8.md)  
+[STEP10へ](step10.md)  

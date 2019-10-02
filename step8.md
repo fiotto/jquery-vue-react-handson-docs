@@ -21,8 +21,11 @@
             </p>
 ```
 
+`` `.btn-todo-high:contains("${selecedItem}")` ``はテンプレート文字列であり、文字列内挿機能をそなえている。  
+`:contains`で文字列を含む要素を抽出できるので、これで含まれているかどうかの判定ができる。  
+
 ```diff
-     $(document).on('click', '.btn-todo', function(){
+      $(document).on('click', '.btn-todo', function(){
 +       const selecedItem = $(this).text();
 +
         $('.btn-todo').removeClass('selected');
@@ -35,7 +38,7 @@
 +
 +       // STEP 8
 +       $('#button-priority-up').prop('disabled', 
-+           $(`.btn-todo-high:contains("${selecedItem}")`).length > 0);
++          $(`.btn-todo-high:contains("${selecedItem}")`).length > 0);
 +
 +       $('#button-priority-down').prop('disabled', 
 +         $(`.btn-todo-low:contains("${selecedItem}")`).length > 0);
@@ -78,6 +81,8 @@
 ```
 
 ### Vue.js
+項目の一覧が配列になっているので`Array.prototype.includes()`で含まれているかどうかを確認できる。  
+
 ```diff
               <p>
 -               <button type="button" class="btn-action" disabled>上げる</button>
@@ -121,6 +126,7 @@
 ```
 
 ### React
+Vue.jsと同様に`Array.prototype.includes()`が使える。  
 ```diff
                     <p>
 -                     <button type="button" className="btn-action" disabled>上げる</button>
@@ -165,5 +171,5 @@
         return (
 ```
 
-[STEP6へ](step7.md)  
-[STEP8へ](step9.md)  
+[STEP7へ](step7.md)  
+[STEP9へ](step9.md)  
