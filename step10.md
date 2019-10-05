@@ -25,7 +25,6 @@ Vue.jsのコンポーネント以下の方法でコンポーネントを実装�
 コンポーネントのテンプレートを作成する  
 「上げる」「下げる」ボタンの判定方法`v-bind:disabled`がことなうので注意する
 ``` diff
-{% raw %}
 +   <script type="text/x-template" id="priority">
 +     <div v-if="isSelectdItem">
 +       <div class="content-center">
@@ -50,13 +49,11 @@ Vue.jsのコンポーネント以下の方法でコンポーネントを実装�
 + 
     <script>
       // TODO ここに記述する
-{% endraw %}
 ```
 
 現在選択されている重要度を取得するために`computed`を追加する  
 作成する子コンポーネントに送るため
 ```diff
-{% raw %}
         },
         computed: {
 -         isSelectdItem: function(){
@@ -69,7 +66,6 @@ Vue.jsのコンポーネント以下の方法でコンポーネントを実装�
           }
         },
         methods: {
-{% endraw %}
 ```
 
 コンポーネントの定義する。（JavaScript部分）  
@@ -82,7 +78,6 @@ Vue.jsのpropsはobjectの`props`プロパティで指定できる。
 イベントを受ける側の親コンポーネントは`v-on:`で受け取る
 
 ``` diff
-{% raw %}
       // TODO ここに記述する
 +     Vue.component('priority', {
 +       template: '#priority',
@@ -103,7 +98,6 @@ Vue.jsのpropsはobjectの`props`プロパティで指定できる。
 +     })
 +     
       const app = new Vue({
-{% endraw %}
 ```
 
 コンポーネントの使用  
@@ -113,7 +107,6 @@ emitで子コンポーネントから受け取る処理を`v-on`
 それぞれ定義する。
 
 ``` diff
-{% raw %}
           </table>
         </div>
 
@@ -143,7 +136,6 @@ emitで子コンポーネントから受け取る処理を`v-on`
 +       ></priority>
 
         <div v-if="isSelectdItem">
-{% endraw %}
 ```
 
 ### React
@@ -162,7 +154,6 @@ Reactでは$emitのようなものは提供していないので、
 propsにコールバック関数を渡して呼び出す。  
 
 ```diff
-{% raw %}
 +     function Priority(props){
 +       function isSelectdItem(){
 +         return props.selectedItem !== null;
@@ -200,12 +191,10 @@ propsにコールバック関数を渡して呼び出す。
 +     }
 + 
     function App(){
-{% endraw %}
 ```
 
 現在選択されている重要度を取得するための関数
 ``` diff
-{% raw %}
         }
   
 -       function isSelectdItem(){
@@ -219,7 +208,6 @@ propsにコールバック関数を渡して呼び出す。
 +       }
  
         function onClickPriority(signum){
-{% endraw %}
 ```
 
 `<Priority>`という独自の要素が使えるようになっているので切り替える  
@@ -227,7 +215,6 @@ propsで子コンポーネントに渡す値と
 emitで子コンポーネントから受け取る処理をするコールバック関数    
 それぞれ定義する。
 ```diff
-{% raw %}
             </div>
  
 -           { isSelectdItem() && (
@@ -257,7 +244,6 @@ emitで子コンポーネントから受け取る処理をするコールバッ�
 +             onClickPriority={ onClickPriority }
 +           ></Priority>
           </div>
-{% endraw %}
 ```
 
 [STEP9へ](step9.md)  

@@ -28,19 +28,16 @@
 画面の初期化のためにイベントを発火させておく。  
 
 ```diff
-{% raw %}
 + 
 +     // STEP 5
 +     $('#input-item').on('input', function(){
 +       $('#text-item').text($(this).val());
 +     }).trigger('input');
     </script>
-{% endraw %}
 ```
 
 ### Vue.js
 ```diff
-{% raw %}
         data: function(){
           return {
             title: 'Vue.js',
@@ -53,13 +50,11 @@
 +           },
 +           inputItem: ''
           }
-{% endraw %}
 ```
 
 `v-model`で双方向バインディングできる。  
 変数と要素を紐付けることができる。  
 ```diff
-{% raw %}
         <div class="row">
 -         <input type="text" class="form-control"/>
 +         <input type="text" class="form-control" v-model="inputItem"/>
@@ -70,7 +65,6 @@
 -         入力値 : <span>掃除</span>
 +         入力値 : <span>{{ inputItem }}</span>
         </div>
-{% endraw %}
 ```
 
 ### React
@@ -81,18 +75,15 @@ inputから値を受け取るイベントと、inputに値を渡すバインド�
 ステートフック `React.useState`は引数に初期値の値、配列がreturnされ、値とsetter関数が含まれているので、分割代入する。
 
 ```diff
-{% raw %}
         const todos = {
           high : ['掃除', '洗濯', '炊事'],
           normal: ['買い物', '草刈り', 'アイロン'],
           low: ['窓拭き', '振り込み', '家計簿管理']
         };
 +       const [inputItem, setInputItem] = React.useState('');
-{% endraw %}
 ```
 
 ```diff
-{% raw %}
           <div className="container">
             <h1><span>{ title }</span>のサンプル</h1>
  
@@ -111,7 +102,6 @@ inputから値を受け取るイベントと、inputに値を渡すバインド�
             </div>
  
             <div>
-{% endraw %}
 ```
 
 [STEP4へ](step4.md)  
