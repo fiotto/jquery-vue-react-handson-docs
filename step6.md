@@ -7,19 +7,16 @@ TODOリストに内容を追加する
 ## 実装
 ### jQuery
 ```diff
-{% raw %}
       <div class="row">
         <input type="text" class="form-control" id="input-item"/>
 -       <button type="button" class="btn-action">追加</button>
 +       <button type="button" class="btn-action" id="button-add">追加</button>
       </div>
-{% endraw %}
 ```
 
 `on`メソッドでイベント処理を追加できる。
 
 ```diff
-{% raw %}
 + 
 +     // STEP 6
 +     $('#button-add').on('click', function(){
@@ -38,7 +35,6 @@ TODOリストに内容を追加する
 +       $('#input-item').trigger('input');
 +     });
     </script>
-{% endraw %}
 ```
 
 ### Vue.js
@@ -46,13 +42,11 @@ TODOリストに内容を追加する
 ※`v-on:イベント名`は`:イベント名`と省略することができる。  
 
 ```diff
-{% raw %}
         <div class="row">
           <input type="text" class="form-control" v-model="inputItem"/>
 -         <button type="button" class="btn-action">追加</button>
 +         <button type="button" class="btn-action" v-on:click="addItem(inputItem)">追加</button>
         </div>
-{% endraw %}
 ```
 
 `methods`オブジェクトで、Vue.jsで使うメソッドを定義する。  
@@ -61,7 +55,6 @@ TODOリストに内容を追加する
 template(HTML)からの呼び出しでは、thisは不要    
 
 ```diff
-{% raw %}
         data: function(){
           ･･･
 -       }
@@ -72,7 +65,6 @@ template(HTML)からの呼び出しでは、thisは不要
 +           this.inputItem = '';
 +         }
 +       }
-{% endraw %}
 ```
 
 ### React
@@ -83,7 +75,6 @@ React.useStateで作成したsetter関数を使う
 オブジェクトに変更を加えた後にsetする場合に、スプレッド構文と用いて、ディープコピーを作成する。
 
 ```diff
-{% raw %}
       function App(){
         const isSelectdItem = Math.random() > 0.5;
 -       const todos = {
@@ -104,14 +95,12 @@ React.useStateで作成したsetter関数を使う
         return (
           <div className="container">
             <h1><span>{ title }</span>のサンプル</h1>
-{% endraw %}
 ```
 
 Vue.jsやそのままのJavaScriptと同じように属性に記述する。  
 Reactの場合はイベントをcamelCaseにしたもの記述する。
 
 ```diff
-{% raw %}
             <div className="row">
               <input type="text" className="form-control" 
                 value={ inputItem }
@@ -121,7 +110,6 @@ Reactの場合はイベントをcamelCaseにしたもの記述する。
 +             <button type="button" className="btn-action" onClick={ addItem }>追加</button>
 
             </div>
-{% endraw %}
 ```
 
 [STEP5へ](step5.md)  

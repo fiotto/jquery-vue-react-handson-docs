@@ -19,7 +19,6 @@ STEP3で作成した表示/非表示のトリガーをランダムから
 該当するJavaScriptの追加する。
 
 ```diff
-{% raw %}
       $('#area-todo-high').empty();
       for(todo of todos.high){
         $('#area-todo-high').append(
@@ -58,49 +57,41 @@ STEP3で作成した表示/非表示のトリガーをランダムから
           )
         );
       }
-{% endraw %}
 ```
 
 動的に作成したボタンなので、イベント自体は  
 ルートノードであるdocumentにイベントを設定する。  
 ```diff
-{% raw %}
 +     // STEP 7
 +     $(document).on('click', '.btn-todo', function(){
 +       $('.btn-todo').removeClass('selected');
 +       $(this).addClass('selected');
 +     });
     </script>
-{% endraw %}
 ```
 
 - STEP7-2
 
 ```diff
-{% raw %}
             <p class="text-center">
 -             <span class="color-red">洗濯</span>の重要度を
 +             <span class="color-red" id="text-selected-item">___</span>の重要度を
             </p>
-{% endraw %}
 ```
 
 STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を削除する。
 ```diff
-{% raw %}
       // STEP 3
 -     const isSelectdItem = Math.random() > 0.5;
 -
 -     $('#text-is-selectd-item').text(String(isSelectdItem));
 -     isSelectdItem ? $('#area-is-selectd-item').show() : $('#area-is-selectd-item').hide();
-{% endraw %}
 ```
 
 初期状態は対象領域を非表示、クリックされた時に表示されるように文を記述する。  
 同時に、変更する必要のある値を修正する。  
 
 ```diff
-{% raw %}
       // STEP 7
 +     $('#area-is-selectd-item').hide();
 +     $('#text-is-selectd-item').text(String(false));
@@ -113,7 +104,6 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
 +       $('#text-is-selectd-item').text(String(true));
 +       $('#text-selected-item').text($(this).text());
       });
-{% endraw %}
 ```
 
 ### Vue.js
@@ -121,7 +111,6 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
 
 クリックした値を格納する値と関数を用意する
 ```diff
-{% raw %}
         data: function(){
           return {
             title: 'Vue.js',
@@ -135,11 +124,9 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
 +           selectedItem: null
           }
         },
-{% endraw %}
 ```
 
 ```diff
-{% raw %}
         methods: {
           addItem: function(){
             this.todos.normal.push(this.inputItem);
@@ -150,7 +137,6 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
 +           this.selectedItem = todo;
 +         }
         }
-{% endraw %}
 ```
 
 `v-bind:属性名`で属性を動的に切り替えることができる。
@@ -158,7 +144,6 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
 ※`v-bind:属性名`は`@属性名`と省略することができる。  
 
 ```diff
-{% raw %}
             <tbody>
               <tr>
                 <td>
@@ -190,18 +175,15 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
                 </td>
               </tr>
             </tbody>
-{% endraw %}
 ```
 
 - STEP7-2
 
 ```diff
-{% raw %}
           return {
             title: 'Vue.js',
 -           isSelectdItem: Math.random() > 0.5,
             todos: {
-{% endraw %}
 ```
 
 `computed`は、値に何らかの処理を与えたものキャッシュすることができる。
@@ -210,7 +192,6 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
 内部で自動的に、値の再評価を行う。
 
 ```diff
-{% raw %}
         },
 +       computed: {
 +         isSelectdItem: function(){
@@ -218,17 +199,14 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
 +         }
 +       },
         methods: {
-{% endraw %}
 ```
 
 ```diff
-{% raw %}
             <div class="card">
               <p class="text-center">
 -               <span class="color-red">洗濯</span>の重要度を
 +               <span class="color-red">{{ selectedItem }}</span>の重要度を
               </p>
-{% endraw %}
 ```
 
 ### React
@@ -237,7 +215,6 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
 クリックした値を格納する値と関数を用意する
 
 ```diff
-{% raw %}
         const [inputItem, setInputItem] = React.useState('');
 +       const [selectedItem, setSelectedItem] = React.useState(null);
 
@@ -252,12 +229,10 @@ STEP3で乱数で生成して、表示/非表示を切り替え亭た部分を�
 +       }
 
         return (
-{% endraw %}
 ```
 
 Reactのclass属性を動的にするには、文字列を作り直す必要がある。
 ```diff
-{% raw %}
                 <tbody>
                   <tr>
                     <td>
@@ -295,13 +270,11 @@ Reactのclass属性を動的にするには、文字列を作り直す必要が�
                     </td>
                   </tr>
                 </tbody>
-{% endraw %}
 ```
 
 - STEP7-2
 
 ```diff
-{% raw %}
       function App(){
 -       const isSelectdItem = Math.random() > 0.5;
         const [todos, setTodos] = React.useState({
@@ -309,14 +282,12 @@ Reactのclass属性を動的にするには、文字列を作り直す必要が�
           normal: ['買い物', '草刈り', 'アイロン'],
           low: ['窓拭き', '振り込み', '家計簿管理']
         });
-{% endraw %}
 ```
 
 Vueの`computed`のようなものは存在しないため、
 関数を定義し、template内で呼び出すようにすることで対応する。
 
 ```diff
-{% raw %}
         function onClickTodo(todo){
           setSelectedItem(todo);
         }
@@ -326,11 +297,9 @@ Vueの`computed`のようなものは存在しないため、
 +       }
 +
         return (
-{% endraw %}
 ```
 
 ```diff
-{% raw %}
             <div className="tmp-space">
 -             重要度の変更を表示 : <span>{ String(isSelectdItem) }</span>
 +             重要度の変更を表示 : <span>{ String(isSelectdItem()) }</span>
@@ -353,7 +322,6 @@ Vueの`computed`のようなものは存在しないため、
                 </div>
               </div>
             )}
-{% endraw %}
 ```
 
 [STEP6へ](step6.md)  
