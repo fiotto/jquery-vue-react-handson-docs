@@ -8,6 +8,7 @@
 ## 実装
 ### jQuery
 ```diff
+{% raw %}
           <tbody>
             <tr>
 +             <td id="area-todo-high">
@@ -48,12 +49,14 @@
               </td>
             </tr>
           </tbody>
+{% endraw %}
 ```
 
 jQueryで動的に構成する場合は、
 DOMのツリー構造を構成する。
 
 ```diff
+{% raw %}
       isSelectdItem ? $('#area-is-selectd-item').show() : $('#area-is-selectd-item').hide();
 +
 +     // STEP 4
@@ -99,11 +102,12 @@ DOMのツリー構造を構成する。
 +       );
 +     }
     </script>
+{% endraw %}
 ```
-
 ### Vue.js
 変数はdataに追加する
 ```diff
+{% raw %}
         data: function(){
           return {
             title: 'Vue.js',
@@ -116,6 +120,7 @@ DOMのツリー構造を構成する。
 +           }
           }
         }
+{% endraw %}
 ```
 
 `v-for`構文で`Array`もしくは`Object`のループを行えます  
@@ -124,6 +129,7 @@ DOMのツリー構造を構成する。
 `v-bind`については、STEP7で説明
 
 ```diff
+{% raw %}
               <tr>
                 <td>
 -                 <p>
@@ -168,10 +174,12 @@ DOMのツリー構造を構成する。
 +                 </p>
                 </td>
               </tr>
+{% endraw %}
 ```
 
 ### React
 ```diff
+{% raw %}
       function App(){
         const isSelectdItem = Math.random() > 0.5;
 +       const todos = {
@@ -181,6 +189,7 @@ DOMのツリー構造を構成する。
 +       };
         
         return (
+{% endraw %}
 ```
 
 ループに関しても、特別な構文を提供していないので、
@@ -190,6 +199,7 @@ JavaScriptの構文をを使う。
 を使う。
 
 ```diff
+{% raw %}
                 <tbody>
                   <tr>
                     <td>
@@ -242,6 +252,7 @@ JavaScriptの構文をを使う。
                     </td>
                   </tr>
                 </tbody>
+{% endraw %}
 ```
 
 [STEP3へ](step3.md)  
