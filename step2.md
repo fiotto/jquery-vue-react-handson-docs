@@ -51,7 +51,7 @@ Vue.jsの場合、変数はobjectの`data`プロパティの部分に指定す�
 {% endraw %}
 ```
 
-`{{ }}`で囲んだ中身は式となり、値を表示できる
+{% raw %}`{{ }}`{% endraw %}で囲んだ中身は式となり、値を表示できる
 ```diff
 {% raw %}
       <div class="container">
